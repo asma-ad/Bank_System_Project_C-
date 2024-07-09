@@ -1,11 +1,10 @@
 
 
-Bank system project (v.01)
+### Bank system project (v.01)
 
-=============================================================================================================
-* Clients information: First name, Last name, Email, Phone number, Account number, PIN code, Account balance.
-=============================================================================================================
-
+===========================================================================
+* Client information: First name, Last name, Email, Phone number, Account number, PIN code, Account balance.
+===========================================================================
 ## Part 01: Main methods
 1 - Find client		: Search for a client by the account number, the PIN code. The method returns an object, it can be an object with info if the client exists, or an empty object if the client isn't exist).
 2 - Updqte client	: It updates client information (All info except account number).
