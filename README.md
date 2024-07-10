@@ -8,6 +8,8 @@ The program allows you to create an account, delete/update your account, find a 
 
 It also allows you to manage users (add/update/delete ... etc).
 
+=> To start the program; go to the "BankSystem.cpp" file.
+
 ===========================================================================
 
 * Client information: First name, Last name, Email, Phone number, Account number, PIN code, Account balance.
