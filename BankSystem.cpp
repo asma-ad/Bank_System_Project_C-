@@ -4,12 +4,15 @@
 
 int main()
 {
-   //  Show Login screen after Loging out
 
     while (true)
     {
-        clsLoginScreen::showLoginScreen();
+        // Lock the System after 3 failed Logins.
+        if (!clsLoginScreen::showLoginScreen())
+        {
+            break;
+        }
     }
-
+   
     return 0;
 }
