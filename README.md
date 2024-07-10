@@ -1,13 +1,19 @@
 
 
-### Bank system project (v.01)
+# Bank system project (v.01)
+
+C++ Project of Bank System. 
+
+The program allows you to create an account, delete/update your account, find a client, make transactions (deposit, withdraw) ... etc
+
+It also allows you to manage users (add/update/delete ... etc).
 
 ===========================================================================
 
 * Client information: First name, Last name, Email, Phone number, Account number, PIN code, Account balance.
 
 ===========================================================================
-## Part 01: Main methods
+### Part 01: Main methods
 1 - Find client		: Search for a client by the account number/the PIN code. The method returns an object, it can be an object with info if the client exists, or an empty object if the client doesn't exist).
 
 2 - Update client	: It updates client information (All info except account number).
@@ -21,7 +27,7 @@
 6 - Total balances	: It shows all client's balances, and total balances.
 
 
-## Part 02: UI - Main Menu (8 options)
+### Part 02: UI - Main Menu (8 options)
 1 - Main Screen screen.
 
 2 - List clients Screen.
@@ -35,7 +41,7 @@
 6 - Find the client screen.
 
 
-## Part 03: UI - Transactions Menu (4 options)
+### Part 03: UI - Transactions Menu (4 options)
 1 - Transactions Screen.
 
 2 - Deposit screen.
@@ -59,7 +65,7 @@
 
 7 - Find the user screen.
 
-## Part 05: Login And Permissions
+### Part 05: Login And Permissions
 1 - Login screen.
 	* Global.h
  
