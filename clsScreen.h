@@ -3,6 +3,7 @@
 #include <iomanip>
 #include "Global.h"
 #include "clsUser.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -36,6 +37,12 @@ protected:
         cout << "\n";
         cout << "\n\t\t\t\t\t------------------------------------------------------------\n\n";
 
+        // Print currentUser
+        cout << "\n\t\t\t\t\tUser :" << currentUser.userName << "\n";
+
+        // Print current date
+        clsDate date;
+        cout << "\t\t\t\t\tDate :" << clsDate::dateToString(clsDate()) << "\n\n";
     }
 
     // check access permissions
