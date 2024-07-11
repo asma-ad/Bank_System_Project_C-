@@ -131,6 +131,19 @@ private:
         _AddDataLineToFile(_ConvertUserObjectToLine(*this));
     }
 
+    //---Log in record---
+    string _PrepareLoginRecord(string seperator = "#//#") {
+
+        string loginRecord = "";
+
+        loginRecord += clsDate::getSystemDateTimeString() + seperator;
+        loginRecord += userName + seperator;
+        loginRecord += password + seperator;
+        loginRecord += to_string(permissions);
+
+        return loginRecord;
+    }
+
 public:
     
     clsUser(enMode mode, string firstName, string lastName, string email, string phone, string userName, string password, int permissions)
@@ -318,4 +331,18 @@ public:
         return _LoadUsersDataFromFile();
     }
 
+    //---Register logins in a log file---
+    void registerLoginInLogFile() {
+
+        string dataLine = _PrepareLoginRecord();
+
+        fstream myFile;
+        myFile.open("logRegisterFile.txt", ios::out || ios::app);
+
+        if (myFile.is_open())
+        {
+            myFile << dataLine << endl;
+            myFile.close();
+        }
+    }
 };
