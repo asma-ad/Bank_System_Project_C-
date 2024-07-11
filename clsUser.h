@@ -5,6 +5,7 @@
 #include <vector>
 #include "clsPerson.h"
 #include "clsString.h"
+#include "clsDate.h"
 
 using namespace std;
 
@@ -337,7 +338,7 @@ public:
         string dataLine = _PrepareLoginRecord();
 
         fstream myFile;
-        myFile.open("logRegisterFile.txt", ios::out || ios::app);
+        myFile.open("logRegisterFile.txt", ios::out | ios::app);
 
         if (myFile.is_open())
         {

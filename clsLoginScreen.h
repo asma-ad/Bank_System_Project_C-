@@ -47,6 +47,9 @@ private:
 
 		} while (loginFailed);
 
+		// Register logins in a log file
+		currentUser.registerLoginInLogFile();
+
 		// show menu screen
 		clsMainScrenn::showMainMenu();
 		return true;
