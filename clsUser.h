@@ -44,6 +44,23 @@ private:
         return clientRecord;
     }
 
+    //---Convert login register line to record---
+    struct stLoginRegisterRecord;
+    static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string line, string seperator = "#//#") {
+
+        stLoginRegisterRecord loginRegisterRecord; // record
+
+        vector <string> vLoginRegisterLine = clsString::Split(line, seperator);
+
+        loginRegisterRecord.dateTime = vLoginRegisterLine[0];
+        loginRegisterRecord.username = vLoginRegisterLine[1];
+        loginRegisterRecord.password = vLoginRegisterLine[2];
+        loginRegisterRecord.permission =stoi(vLoginRegisterLine[3]);
+
+        return loginRegisterRecord;
+
+    }
+
     //---Get empty object---
     static clsUser _GetEmptyUserObject()
     {
@@ -345,5 +362,39 @@ public:
             myFile << dataLine << endl;
             myFile.close();
         }
+    }
+
+    //---Register list---
+    struct stLoginRegisterRecord
+    {
+        string dateTime;
+        string username;
+        string password;
+        int permission;
+    };
+
+    static vector <stLoginRegisterRecord> getLoginRegisterList() {
+
+        vector <stLoginRegisterRecord> vLoginRegisterRec;
+
+        fstream myFile;
+        myFile.open("logRegisterFile.txt", ios::in);
+
+        if (myFile.is_open())
+        {
+            string line;
+            stLoginRegisterRecord loginRegisterRecord;
+
+            while (getline(myFile, line)) 
+            {
+                loginRegisterRecord = _ConvertLoginRegisterLineToRecord(line);
+                vLoginRegisterRec.push_back(loginRegisterRecord);
+            }
+            
+            myFile.close();
+        }
+
+        return vLoginRegisterRec;
+
     }
 };
