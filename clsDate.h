@@ -98,6 +98,26 @@ public:
 		return clsDate(day, month, year);
 	}
 
+	//---Get system date time---
+	static string getSystemDateTimeString()
+	{
+		time_t t = time(0);
+		tm* now = localtime(&t);
+
+		short day, month, year, hour, minute, second;
+
+		year = now->tm_year + 1900;
+		month = now->tm_mon + 1;
+		day = now->tm_mday;
+
+		hour = now->tm_hour;
+		minute = now->tm_min;
+		second = now->tm_sec;
+
+		return to_string(day) + "/" + to_string(month) + "/" + to_string(year) + " - " +
+			   to_string(hour) + ":" + to_string(minute) + ":" + to_string(second);
+	}
+
 	//---Date to string---
 	static string dateToString(clsDate date)
 	{
