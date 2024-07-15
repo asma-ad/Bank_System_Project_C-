@@ -4,6 +4,8 @@
 #include "clsDepositeScreen.h"
 #include "clsWithdrawScreen.h"
 #include "clsTotalBalancesScreen.h"
+#include "clsTransferScreen.h"
+#include "clsTransferLogScreen.h"
 
 class clsTransactionsScreen : protected clsScreen {
 
@@ -13,7 +15,9 @@ private:
 		Deposite = 1,
 		Withdraw = 2,
 		TotalBalances = 3,
-		MainMenu =4
+		Transfer = 4,
+		TransferLog = 5,
+		MainMenu = 6
 	};
 
 	//---Read user option---
@@ -21,8 +25,8 @@ private:
 
 		short userOption;
 
-		cout << setw(40) << left << "" << "Enter your option [1/4] : ";
-		userOption = clsInputValidate::readShortNumberBetween(1, 4, "\t\t\t\t\tInvalid number! Please enter a valid number: ");
+		cout << setw(40) << left << "" << "Enter your option [1/6] : ";
+		userOption = clsInputValidate::readShortNumberBetween(1, 6, "\t\t\t\t\tInvalid number! Please enter a valid number: ");
 		return userOption;
 	}
 
@@ -48,6 +52,16 @@ private:
 		clsTotalBalancesScreen::showTotalBalance();
 	}
 
+	//---Transfer screen---
+	static void _ShowTransferScreen() {
+		clsTransferScreen::showTransferScreen();
+	}
+
+	//---Transfer Log screen---
+	static void _ShowTransferLogScreen() {
+		clsTransferLogScreen::showTransferRegisterScreen();
+	}
+
 	//---Perform transactions menu options---
 	static void _PerformTransactionsMenuOption(enOptions userOption) {
 
@@ -71,6 +85,20 @@ private:
 			{
 				system("cls");
 				_ShowTotalBalancesScreen();
+				_GoBackToTransactionsScreen();
+				break;
+			}
+			case clsTransactionsScreen::Transfer:
+			{
+				system("cls");
+				_ShowTransferScreen();
+				_GoBackToTransactionsScreen();
+				break;
+			}
+			case clsTransactionsScreen::TransferLog:
+			{
+				system("cls");
+				_ShowTransferLogScreen();
 				_GoBackToTransactionsScreen();
 				break;
 			}
@@ -107,7 +135,9 @@ public:
 		cout << setw(40) << left << "" << "\t[1] Deposite.\n";
 		cout << setw(40) << left << "" << "\t[2] Withdraw.\n";
 		cout << setw(40) << left << "" << "\t[3] Total balances.\n";
-		cout << setw(40) << left << "" << "\t[4] Main menu.\n";
+		cout << setw(40) << left << "" << "\t[4] Transfer.\n";
+		cout << setw(40) << left << "" << "\t[5] Transfer Log.\n";
+		cout << setw(40) << left << "" << "\t[6] Main menu.\n";
 
 		cout << setw(40) << left << "" << "============================================================\n";
 

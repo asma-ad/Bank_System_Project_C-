@@ -20,13 +20,11 @@ public:
     static void showLoginRegisterScreen() {
 
         // Check permissions 
-        /*
-            if (!checkAccessRights(clsUser::enPermissions::pListClient))
+            if (!checkAccessRights(clsUser::enPermissions::pLoginRegister))
         {
             // if the user hasn't access, exit!
             return;
         }
-        */
 
         // get login register list
         vector <clsUser::stLoginRegisterRecord> vLoginRegisterRec = clsUser::getLoginRegisterList();

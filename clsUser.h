@@ -6,6 +6,7 @@
 #include "clsPerson.h"
 #include "clsString.h"
 #include "clsDate.h"
+#include "clsUtil.h"
 
 using namespace std;
 
@@ -25,8 +26,9 @@ private:
     {
         vector<string> vClientData;
         vClientData = clsString::Split(line, seperator);
-
-        return clsUser(enMode::updateMode, vClientData[0], vClientData[1], vClientData[2], vClientData[3], vClientData[4], vClientData[5], stoi(vClientData[6]));
+        
+        // it's important to decrypt password to be able to login!
+        return clsUser(enMode::updateMode, vClientData[0], vClientData[1], vClientData[2], vClientData[3], vClientData[4], clsUtil::DecryptText(vClientData[5]), stoi(vClientData[6]));
     }
 
     //---Convert User object to line (record)---
@@ -38,7 +40,7 @@ private:
         clientRecord += client.email + seperator;
         clientRecord += client.phone + seperator;
         clientRecord += client.userName + seperator;
-        clientRecord += client.password + seperator;
+        clientRecord += clsUtil::EncryptText(client.password) + seperator; // encrypt pass
         clientRecord += to_string(client.permissions);
 
         return clientRecord;
@@ -54,7 +56,7 @@ private:
 
         loginRegisterRecord.dateTime = vLoginRegisterLine[0];
         loginRegisterRecord.username = vLoginRegisterLine[1];
-        loginRegisterRecord.password = vLoginRegisterLine[2];
+        loginRegisterRecord.password = clsUtil::DecryptText(vLoginRegisterLine[2]); // it's important to decrypt password!
         loginRegisterRecord.permission =stoi(vLoginRegisterLine[3]);
 
         return loginRegisterRecord;
@@ -156,7 +158,7 @@ private:
 
         loginRecord += clsDate::getSystemDateTimeString() + seperator;
         loginRecord += userName + seperator;
-        loginRecord += password + seperator;
+        loginRecord += clsUtil::EncryptText(password) + seperator; // encrypt password
         loginRecord += to_string(permissions);
 
         return loginRecord;
@@ -176,7 +178,7 @@ public:
     // Permissions
     enum enPermissions {
         pAll = -1, pListClient = 1, pAddNewClient = 2, pDeletClient = 4,
-        pUpdateClient = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64
+        pUpdateClient = 8, pFindClient = 16, pTransactions = 32, pManageUsers = 64, pLoginRegister = 128
     };
     bool checkAccessPermission(enPermissions permission) {
 
