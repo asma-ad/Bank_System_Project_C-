@@ -77,11 +77,13 @@ It also allows you to manage users (add/update/delete ... etc).
 	* Avoiding circular reference (error).
  
 4 - Apply permissions.
-
-===================================================
-     10 Extensions for the Bank system project.
-===================================================
  
+ 
+ 
+********************************
+
+### 10 Extensions for the Bank system project.
+
  Extension 01: Add date and logged-in user to all screens.
 
  Extension 02: Lock the System after 3 failed Logins.
@@ -101,5 +103,10 @@ It also allows you to manage users (add/update/delete ... etc).
  Extension 09: Encrypt password in file.
 
  Extension 10: Abstract Class/Interface.
+ 
+********************************
+
+ 
+
 
  
